@@ -29,7 +29,7 @@ public class HelloController {
     private Label welcomeText;
 
     @FXML
-    private ListView<StoreItem> store;
+    private ListView<String> store;
 
     ArrayList<StoreItem> items = new ArrayList<>();
 
@@ -64,7 +64,9 @@ public class HelloController {
         for (int i = 0; i < jsonStore.length(); ++i) {
             StoreItem item = new StoreItem();
             item.info = jsonStore.getJSONObject(i);
-            items.add(item);
+
+            String itemName = item.info.getString("name");
+            store.getItems().add(itemName);
         }
     }
 
